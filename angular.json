@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "airbnb-ng"
+    }
+  },
+  "defaultProject": "airbnb-ng",
+  "cli": {
+    "analytics": false
+  }
 }
