@@ -1,1 +1,4 @@
-<p>score works!</p>
+<div *ngFor="let item of spaces">
+    <span *ngIf="item <= score"><i class="material-icons">star</i></span>
+    <span *ngIf="item > score"><i class="material-icons">star_outline</i></span>
+</div>
