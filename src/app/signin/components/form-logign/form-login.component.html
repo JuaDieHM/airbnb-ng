@@ -1,0 +1,13 @@
+<section>
+    <form class="form" [formGroup]="formGroupSignIn">
+        <div class="control-form">
+            <label>Email:</label>
+            <input formControlName="userEmail" type="email" name="emailTxt" placeholder="Email">
+        </div>
+        <div class="control-form">
+            <label>Password:</label>
+            <input formControlName="userPass" type="password" name="passTxt" placeholder="Password">
+        </div>
+        <button (click)="validateSignIn()">Ingresar</button>
+    </form>
+</section>

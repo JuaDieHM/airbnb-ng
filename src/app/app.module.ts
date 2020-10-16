@@ -7,6 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { BookingComponent } from './booking/components/booking/booking.component';
 import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
+import { SignupModule } from './signup/signup.module';
+import { SigninModule } from './signin/signin.module';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { DetailModule } from './detail/detail.module';
     SharedModule,
     HomeModule,
     DetailModule,
-
+    SignupModule,
+    SigninModule
   ],
   providers: [],
   bootstrap: [AppComponent]
