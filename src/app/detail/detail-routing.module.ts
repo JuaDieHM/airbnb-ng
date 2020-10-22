@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './signin.component';
+import { DetailComponent } from './detail.component';
 
-const routesSignIn: Routes = [
+const routeDetail: Routes = [
   {
     path: '',
-    component: SigninComponent,
+    component: DetailComponent,
     pathMatch: 'full'
   }
 ]
@@ -13,8 +13,8 @@ const routesSignIn: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forChild(routesSignIn)
+    RouterModule.forChild(routeDetail)
   ],
   exports: [RouterModule]
 })
-export class SigninRoutingModule { }
+export class DetailRoutingModule { }

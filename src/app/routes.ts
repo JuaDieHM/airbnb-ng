@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
 import { BookingComponent } from './booking/components/booking/booking.component';
-import { DetailComponent } from './detail/detail.component';
-import { Page404Component } from './error-page/components/page404/page404.component';
-import { SigninComponent } from './signin/signin.component';
-
 
 export const routes: Routes = [
   {
@@ -17,7 +13,7 @@ export const routes: Routes = [
   },
   {
     path: 'detail/:id',
-    component: DetailComponent
+    loadChildren: () => import('./detail/detail.module').then(mod => mod.DetailModule)
   },
   {
     path: 'booking',
@@ -33,7 +29,7 @@ export const routes: Routes = [
   }  ,
   {
     path: '404',
-    component: Page404Component
+    loadChildren: () => import('./error-page/error-page.module').then(mod => mod.ErrorPageModule)
   },
   {
     path: '**',
