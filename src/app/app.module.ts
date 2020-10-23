@@ -9,7 +9,7 @@ import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
 import { SignupModule } from './signup/signup.module';
 import { SigninModule } from './signin/signin.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { SigninModule } from './signin/signin.module';
     HomeModule,
     DetailModule,
     SignupModule,
-    SigninModule
+    SigninModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

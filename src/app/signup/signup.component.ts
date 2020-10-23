@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/users/user.service';
+import { IUser } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -11,5 +13,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  private 
 
 }

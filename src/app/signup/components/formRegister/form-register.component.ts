@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { onErrorResumeNext } from 'rxjs';
+import { UserService } from 'src/app/services/users/user.service';
+import { IUser } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-form-register',
@@ -8,9 +10,11 @@ import { onErrorResumeNext } from 'rxjs';
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit {
+  
   public formGroup: FormGroup;
+  public user: IUser; 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.formInit();
@@ -19,6 +23,7 @@ export class FormRegisterComponent implements OnInit {
   private formInit(): void{
     this.formGroup = this.formBuilder.group({
       name: ['', Validators.required],
+      identification: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.maxLength(16), this.validatePassword ]]
@@ -71,7 +76,18 @@ export class FormRegisterComponent implements OnInit {
 
 
   public register(): void {
-    const data = this.formGroup.value;
+    const data : IUser = this.formGroup.value;
     console.log('data register', data)
+    this.generateRegisterUser(data);
+  }
+
+
+  /**
+   * Consumo del servicio.
+   */
+  private generateRegisterUser(user: IUser) : void {
+      this.userService.registerUser(user).subscribe(
+        response => console.log('Usuario Registrado', response)
+      )
   }
 }
