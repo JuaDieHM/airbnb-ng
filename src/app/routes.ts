@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { BookingComponent } from './booking/components/booking/booking.component';
+
 
 export const routes: Routes = [
   {
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'booking',
-    component: BookingComponent
+    loadChildren: () => import('./booking/booking.module').then(mod => mod.BookingModule)
   },
   {
     path: 'signin',

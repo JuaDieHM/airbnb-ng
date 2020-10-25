@@ -33,8 +33,7 @@ export class FormLoginComponent implements OnInit {
 
   private triedAuthenticate(user: IUser) : void {
     this.userService.authenticate(user).subscribe(
-      response => console.log('Autenticacion:', response.token)
+      response => console.log('Autenticacion:', response.status)
     );
   }
-
 }
