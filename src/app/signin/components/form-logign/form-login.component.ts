@@ -32,8 +32,18 @@ export class FormLoginComponent implements OnInit {
   }
 
   private triedAuthenticate(user: IUser) : void {
+ 
     this.userService.authenticate(user).subscribe(
-      response => console.log('Autenticacion:', response.status)
+      response => {console.log('Autenticacion:', response.status)
+        this.saveToken(response.token);
+      }     
     );
+  }
+
+  private saveToken(token : string) {
+     if(token) {
+       localStorage.setItem("autenthicationToken", JSON.stringify(token));
+     }
+     console.log('Token found: ', localStorage.getItem("autenthicationToken"));
   }
 }
