@@ -4,17 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { BookingComponent } from './booking/components/booking/booking.component';
+
 import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
 import { SignupModule } from './signup/signup.module';
 import { SigninModule } from './signin/signin.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BookingModule } from './booking/booking.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     DetailModule,
     SignupModule,
     SigninModule,
+    BookingModule,
     HttpClientModule
   ],
   providers: [],

@@ -15,37 +15,45 @@ export class FormBookingComponent implements OnInit {
  
   ngOnInit(): void {
     this.bookingInitial();
+    this.validateDayTomorrow();
   }
-
-
 
   private bookingInitial() : void {
     this.formGroup = this.formBuilder.group({
-      reserveDate: [''],
+      reserveInitialDate: ['', Validators.required],
+      reserveEndDate: ['', Validators.required],
       comment: ['', Validators.required]
     })
   }
 
   private validateDayTomorrow(){
-    const today = new Date();
+    var today = new Date();
     today.setDate(today.getDate() + 1);
-    this.initialDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDay()}`;
+    this.initialDate = `${today.getFullYear()} - ${today.getMonth()+1} - ${today.getDate()}`;
+  }
+
+
+  public showErrorMessage(control : string) : string {
+    let errorMessage = '';
+    const validateControl = this.formGroup.get(control);
+
+    if(validateControl.touched && validateControl.errors != null) {
+      errorMessage = this.errorMapping(validateControl.errors);
+    }
+    return errorMessage;
   }
 
   private errorMapping(errors: any) : string {
     let errorMessage = '';
 
-    if(errors.required){
-
+    if(errors.required) {
+      errorMessage += 'This field is requiered';
     }
-
     return errorMessage;
   }
 
-
-  public bookingRegister() : void {
-    const data : this.formGroup.value;
-    
+  public saveBooking() : void {
+    const data = this.formGroup.value;
+    console.log('Success booking. :D', data);
   }
-
 }

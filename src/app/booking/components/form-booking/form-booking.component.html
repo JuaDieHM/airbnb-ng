@@ -1,1 +1,22 @@
-<p>form-booking works!</p>
+<section>
+    <form class="form" [formGroup]="formGroup">
+        <div class="control-form">
+            <label>Fecha Inicial:</label>
+            <input formControlName="reserveInitialDate" type="date" name="initialDateTxt" min="{{initialDate}}" />
+        </div>
+        <span class="error">{{showErrorMessage('reserveInitialDate')}}</span>
+
+        <div class="control-form">
+            <label>Fecha Final:</label>
+            <input formControlName="reserveEndDate" type="date" name="endDateTxt" />
+        </div>
+
+        <div class="control-form">
+            <label>Comentarios:</label>
+            <input formControlName="comment" type="text" name="commentsTxt" maxlength="100" />
+        </div>        
+        <span class="error">{{showErrorMessage('comment')}}</span>
+        <br />
+        <button (click)="saveBooking()" [disabled]="formGroup.invalid">Reservar</button> 
+    </form>
+</section>
