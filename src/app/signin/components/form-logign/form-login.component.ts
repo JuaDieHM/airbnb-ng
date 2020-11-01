@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/users/user.service';
 import { IUser } from 'src/app/shared/models/user.model';
 
@@ -9,10 +10,14 @@ import { IUser } from 'src/app/shared/models/user.model';
   styleUrls: ['./form-login.component.scss']
 })
 export class FormLoginComponent implements OnInit {
+
   public formGroupSignIn: FormGroup;
   public user : IUser;
-
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  public controlErrorMessage: string;
+  
+  constructor(private formBuilder: FormBuilder, 
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.formInitSignIn();
@@ -32,18 +37,23 @@ export class FormLoginComponent implements OnInit {
   }
 
   private triedAuthenticate(user: IUser) : void {
- 
+
+    const INVALID_MESSAGE = 'Credentials Invalid';
+
     this.userService.authenticate(user).subscribe(
-      response => {console.log('Autenticacion:', response.status)
-        this.saveToken(response.token);
-      }     
-    );
+      response => {
+        if (response.status === 1) {
+          this.router.navigate(['/home']);
+          this.saveToken(response.token);
+        } else {
+          this.controlErrorMessage = INVALID_MESSAGE;
+        }
+      });
   }
 
   private saveToken(token : string) {
      if(token) {
-       localStorage.setItem("autenthicationToken", JSON.stringify(token));
+       localStorage.setItem('token', token);
      }
-     console.log('Token found: ', localStorage.getItem("autenthicationToken"));
   }
 }

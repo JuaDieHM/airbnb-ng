@@ -9,5 +9,6 @@
             <input formControlName="userPass" type="password" name="passTxt" placeholder="Password">
         </div>
         <button (click)="validateSignIn()">Ingresar</button>
+        <span class="error"> {{controlErrorMessage}}</span>
     </form>
 </section>

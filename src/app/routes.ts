@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { OnlyLoggedInUsersGuard } from './shared/guards/only-logged-in-users.guard'
 
 
 export const routes: Routes = [
@@ -16,8 +17,9 @@ export const routes: Routes = [
     loadChildren: () => import('./detail/detail.module').then(mod => mod.DetailModule)
   },
   {
-    path: 'booking',
-    loadChildren: () => import('./booking/booking.module').then(mod => mod.BookingModule)
+    path: 'booking/:id',
+    loadChildren: () => import('./booking/booking.module').then(mod => mod.BookingModule),
+    canActivate: [OnlyLoggedInUsersGuard]
   },
   {
     path: 'signin',
@@ -26,7 +28,7 @@ export const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then(mod => mod.SignupModule)
-  }  ,
+  },
   {
     path: '404',
     loadChildren: () => import('./error-page/error-page.module').then(mod => mod.ErrorPageModule)

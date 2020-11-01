@@ -9,8 +9,9 @@ import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
 import { SignupModule } from './signup/signup.module';
 import { SigninModule } from './signin/signin.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookingModule } from './booking/booking.module';
+import { TokenInterceptorService } from './services/signin/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,11 @@ import { BookingModule } from './booking/booking.module';
     BookingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,20 +2,21 @@
     <form class="form" [formGroup]="formGroup">
         <div class="control-form">
             <label>Fecha Inicial:</label>
-            <input formControlName="reserveInitialDate" type="date" name="initialDateTxt" min="{{initialDate}}" />
+            <input formControlName="booking_date_start" type="date" name="initialDateTxt" min="{{initialDate}}" />
         </div>
-        <span class="error">{{showErrorMessage('reserveInitialDate')}}</span>
+        <span class="error">{{showErrorMessage('booking_date_start')}}</span>
 
         <div class="control-form">
             <label>Fecha Final:</label>
-            <input formControlName="reserveEndDate" type="date" name="endDateTxt" />
+            <input formControlName="booking_date_end" type="date" name="endDateTxt" />
         </div>
+        <span class="error">{{showErrorMessage('booking_date_end')}}</span>
 
         <div class="control-form">
             <label>Comentarios:</label>
-            <input formControlName="comment" type="text" name="commentsTxt" maxlength="100" />
+            <input formControlName="comments" type="text" name="commentsTxt" maxlength="100" />
         </div>        
-        <span class="error">{{showErrorMessage('comment')}}</span>
+        <span class="error">{{showErrorMessage('comments')}}</span>
         <br />
         <button (click)="saveBooking()" [disabled]="formGroup.invalid">Reservar</button> 
     </form>

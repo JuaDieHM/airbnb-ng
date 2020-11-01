@@ -1,5 +1,5 @@
 
 export interface IAuthenticateResponse {
-    status: string,
+    status: number,
     token: string
 }

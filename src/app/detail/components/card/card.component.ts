@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IExperience } from 'src/app/shared/models/experience.model';
 
 @Component({
@@ -13,6 +14,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

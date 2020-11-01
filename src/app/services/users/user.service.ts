@@ -13,8 +13,15 @@ import { IAuthenticateResponse } from 'src/app/shared/models/autenthicateRespons
 export class UserService {
 
   private URL_API : string = environment.urlBase;
+  private isAuthenticated: boolean = false;
 
   constructor(private httpClient : HttpClient) { }
+
+
+  public isLogged(): boolean {
+    this.isAuthenticated = localStorage.getItem('token') ? true : false;
+    return this.isAuthenticated;
+  }
 
   private handlerError(error: HttpErrorResponse) {
     console.error('Http Error', error);
